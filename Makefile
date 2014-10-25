@@ -43,6 +43,7 @@ EXTRAS = icon.png metadata.txt
 
 COMPILED_RESOURCE_FILES = resources_rc.py
 
+UI_FILES = ui_sogis_browser_dialog.py 
 
 #################################################
 # Normally you would not need to edit below here
@@ -56,7 +57,10 @@ QGISDIR=.qgis2
 
 default: compile
 
-compile: $(COMPILED_RESOURCE_FILES)
+compile: $(COMPILED_RESOURCE_FILES) $(UI_FILES)
+
+%.py : %.ui
+	pyuic4 -o $@ $<
 
 %_rc.py : %.qrc
 	pyrcc4 -o $*_rc.py  $<

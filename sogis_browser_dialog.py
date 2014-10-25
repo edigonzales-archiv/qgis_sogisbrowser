@@ -20,22 +20,17 @@
  *                                                                         *
  ***************************************************************************/
 """
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
+from qgis.core import *
+from qgis.gui import *
 
 import os
 
-from PyQt4 import QtGui, uic
+from ui_sogis_browser_dialog import Ui_SogisBrowserDialog
 
-FORM_CLASS, _ = uic.loadUiType(os.path.join(
-    os.path.dirname(__file__), 'sogis_browser_dialog_base.ui'))
-
-
-class SogisBrowserDialog(QtGui.QDialog, FORM_CLASS):
+class SogisBrowserDialog(QDialog, Ui_SogisBrowserDialog):
     def __init__(self, parent=None):
         """Constructor."""
-        super(SogisBrowserDialog, self).__init__(parent)
-        # Set up the user interface from Designer.
-        # After setupUI you can access any designer object by doing
-        # self.<objectname>, and you can use autoconnect slots - see
-        # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
-        # #widgets-and-dialogs-with-auto-connect
+        QDialog.__init__(self, parent)
         self.setupUi(self)

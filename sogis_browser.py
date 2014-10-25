@@ -22,10 +22,9 @@
 """
 from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
 from PyQt4.QtGui import QAction, QIcon
-# Initialize Qt resources from file resources.py
-import resources_rc
-# Import the code for the dialog
 from sogis_browser_dialog import SogisBrowserDialog
+
+import resources_rc
 import os.path
 
 
@@ -40,11 +39,9 @@ class SogisBrowser:
             application at run time.
         :type iface: QgsInterface
         """
-        # Save reference to the QGIS interface
         self.iface = iface
-        # initialize plugin directory
         self.plugin_dir = os.path.dirname(__file__)
-        # initialize locale
+
         locale = QSettings().value('locale/userLocale')[0:2]
         locale_path = os.path.join(
             self.plugin_dir,
@@ -159,7 +156,6 @@ class SogisBrowser:
 
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
-
         icon_path = ':/plugins/SogisBrowser/icon.png'
         self.add_action(
             icon_path,
