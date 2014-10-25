@@ -43,7 +43,7 @@ EXTRAS = icon.png metadata.txt
 
 COMPILED_RESOURCE_FILES = resources_rc.py
 
-UI_FILES = ui_sogis_browser_dialog.py 
+UI_FILES = ui_sogis_browser_dock.py
 
 #################################################
 # Normally you would not need to edit below here

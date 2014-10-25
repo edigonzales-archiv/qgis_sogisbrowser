@@ -20,9 +20,9 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt4.QtGui import QAction, QIcon
-from sogis_browser_dialog import SogisBrowserDialog
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
+from sogis_browser_dock import SogisBrowserDock
 
 import resources_rc
 import os.path
@@ -56,7 +56,8 @@ class SogisBrowser:
                 QCoreApplication.installTranslator(self.translator)
 
         # Create the dialog (after translation) and keep reference
-        self.dlg = SogisBrowserDialog()
+        self.dock = SogisBrowserDock()
+        self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dock)
 
         # Declare instance attributes
         self.actions = []
@@ -156,7 +157,7 @@ class SogisBrowser:
 
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
-        icon_path = ':/plugins/SogisBrowser/icon.png'
+        icon_path = ':/plugins/sogisbrowser/icons/icon.png'
         self.add_action(
             icon_path,
             text=self.tr(u'Text for menu item'),
@@ -174,13 +175,15 @@ class SogisBrowser:
 
 
     def run(self):
-        """Run method that performs all the real work"""
-        # show the dialog
-        self.dlg.show()
-        # Run the dialog event loop
-        result = self.dlg.exec_()
-        # See if OK was pressed
-        if result:
-            # Do something useful here - delete the line containing pass and
-            # substitute with your code.
-            pass
+        self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dock)        
+        pass
+#        """Run method that performs all the real work"""
+#        # show the dialog
+#        self.dlg.show()
+#        # Run the dialog event loop
+#        result = self.dlg.exec_()
+#        # See if OK was pressed
+#        if result:
+#            # Do something useful here - delete the line containing pass and
+#            # substitute with your code.
+#            pass

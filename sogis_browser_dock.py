@@ -27,10 +27,18 @@ from qgis.gui import *
 
 import os
 
-from ui_sogis_browser_dialog import Ui_SogisBrowserDialog
+from ui_sogis_browser_dock import Ui_SogisBrowserDock
 
-class SogisBrowserDialog(QDialog, Ui_SogisBrowserDialog):
+class SogisBrowserDock(QDockWidget, Ui_SogisBrowserDock):
     def __init__(self, parent=None):
         """Constructor."""
-        QDialog.__init__(self, parent)
+        QDockWidget.__init__(self, parent)
         self.setupUi(self)
+
+        self.toolButtonReset.setIcon(QIcon(':/plugins/sogisbrowser/icons/reset.svg'))
+
+        today = QDateTime.currentDateTime()
+        self.dateEdit.setDateTime(today)
+        self.dateEdit.setCalendarPopup(True)
+        
+#        self.dateEdit.setLocale(QLocale(QLocale.German));  # Qt Designer
