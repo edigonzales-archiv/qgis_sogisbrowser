@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/SogisBrowser" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
