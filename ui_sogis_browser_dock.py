@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_sogis_browser_dock.ui'
 #
-# Created: Sat Oct 25 17:10:09 2014
+# Created: Sun Oct 26 17:49:27 2014
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -24,7 +24,7 @@ class Ui_SogisBrowserDock(object):
         self.gridLayout.setContentsMargins(0, -1, 0, 0)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.horizontalLayout = QtGui.QHBoxLayout()
-        self.horizontalLayout.setContentsMargins(-1, -1, 3, -1)
+        self.horizontalLayout.setContentsMargins(3, -1, 3, -1)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.lineEdit = QtGui.QLineEdit(self.dockWidgetContents)
         self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
@@ -34,12 +34,16 @@ class Ui_SogisBrowserDock(object):
         self.horizontalLayout.addWidget(self.toolButtonReset)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         self.treeWidget = QtGui.QTreeWidget(self.dockWidgetContents)
+        self.treeWidget.setDragEnabled(False)
+        self.treeWidget.setAlternatingRowColors(True)
+        self.treeWidget.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
+        self.treeWidget.setColumnCount(1)
         self.treeWidget.setObjectName(_fromUtf8("treeWidget"))
         self.treeWidget.headerItem().setText(0, _fromUtf8("1"))
         self.treeWidget.header().setVisible(False)
         self.gridLayout.addWidget(self.treeWidget, 2, 0, 1, 1)
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
-        self.horizontalLayout_2.setContentsMargins(-1, -1, 3, -1)
+        self.horizontalLayout_2.setContentsMargins(3, -1, 3, -1)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.dateEdit = QtGui.QDateEdit(self.dockWidgetContents)
         self.dateEdit.setLocale(QtCore.QLocale(QtCore.QLocale.German, QtCore.QLocale.Switzerland))

@@ -58,6 +58,7 @@ class SogisBrowser:
         # Create the dialog (after translation) and keep reference
         self.dock = SogisBrowserDock()
         self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dock)
+        self.dock.initGui()
 
         # Declare instance attributes
         self.actions = []
@@ -175,7 +176,8 @@ class SogisBrowser:
 
 
     def run(self):
-        self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dock)        
+        self.iface.addDockWidget(Qt.RightDockWidgetArea, self.dock)
+        self.dock.initGui()
         pass
 #        """Run method that performs all the real work"""
 #        # show the dialog
