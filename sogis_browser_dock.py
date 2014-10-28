@@ -34,6 +34,7 @@ import collections
 import traceback
 
 from ui_sogis_browser_dock import Ui_SogisBrowserDock
+from sogis_browser_treewidget import SogisBrowserTreeWidget
 
 class SogisBrowserDock(QDockWidget, Ui_SogisBrowserDock):
     def __init__(self, parent=None):
@@ -41,7 +42,7 @@ class SogisBrowserDock(QDockWidget, Ui_SogisBrowserDock):
         QDockWidget.__init__(self, parent)
         self.setupUi(self)
         
-        self.SEARCH_URL = "http://www.catais.org/wsgi/search_metadb.wsgi?query="
+        self.SEARCH_URL = "http://www.catais.org/wsgi/search_metadb_sogis.wsgi?query="
 
         self.toolButtonReset.setIcon(QIcon(':/plugins/sogisbrowser/icons/reset.svg'))
 
@@ -49,26 +50,10 @@ class SogisBrowserDock(QDockWidget, Ui_SogisBrowserDock):
         self.dateEdit.setDateTime(today)
         self.dateEdit.setCalendarPopup(True)
         
-#        self.dateEdit.setLocale(QLocale(QLocale.German));  # Qt Designer
-
-        self.treeWidget.setColumnCount(3)
-        self.treeWidget.hideColumn(2)        
-        self.treeWidget.setUniformRowHeights(True)
-        self.treeWidget.setRootIsDecorated(False)
-        self.treeWidget.setEditTriggers(QTreeWidget.NoEditTriggers)
-        self.treeWidget.setSelectionBehavior(QTreeWidget.SelectRows)
-#        self.treeWidget.setFrameStyle(QFrame.Box | QFrame.Plain)
-#        self.treeWidget.header().resizeSection(0, 50)
-        self.treeWidget.header().setStretchLastSection(False);
-        self.treeWidget.header().setResizeMode(0, QHeaderView.Stretch);   
-        self.treeWidget.header().setResizeMode(1, QHeaderView.ResizeToContents);   
+        self.treeWidget = SogisBrowserTreeWidget()
+        self.gridLayout.addWidget(self.treeWidget)
         
-#        self.treeWidget.setDragDropMode( QTreeView.DragDrop )
-#        self.treeWidget.setDragEnabled(True) 
-        self.treeWidget.setDragEnabled(True)
-        self.treeWidget.setAcceptDrops(False)
-
-        self.treeWidget.header().hide()
+#        self.dateEdit.setLocale(QLocale(QLocale.German));  # Qt Designer
         
         font = QFont()
         font.setPointSize(10)
@@ -76,25 +61,8 @@ class SogisBrowserDock(QDockWidget, Ui_SogisBrowserDock):
 
         self.networkManager = QNetworkAccessManager(self)
         self.connect(self.networkManager, SIGNAL("finished(QNetworkReply*)"), self.handleNetworkData)
-
-#    def dragEnterEvent(e):
-#        e.accept()
-#
-#    def dragMoveEvent(e):
-##      // do not accept drops above/below items
-##      /*if ( dropIndicatorPosition() != QAbstractItemView::OnItem )
-##      {
-##        QgsDebugMsg("drag not on item");
-##        e->ignore();
-##        return;
-##      }*/
-#
-#        QTreeView.dragMoveEvent( e );
-#
-#        if not e.mimeData().hasFormat( "application/x-vnd.qgis.qgis.uri" ):
-#            e.ignore()
-#            return
-
+        
+        QObject.connect(self.toolButtonReset, SIGNAL("clicked()"), self.resetSuggest)
 
     def initGui(self):
         request = QNetworkRequest(QUrl(self.SEARCH_URL))
@@ -145,13 +113,10 @@ class SogisBrowserDock(QDockWidget, Ui_SogisBrowserDock):
             item.setTextAlignment(1, Qt.AlignRight)            
             item.setTextColor(1, color)
             
-#            item.setText(2, str(meta_id[i]))
-#            item.setTextAlignment(2, Qt.AlignRight)
-#            item.setTextColor(2, color)
             item.setData(2, Qt.UserRole, meta_id[i])
 
-#        self.treeWidget.setCurrentItem(self.treeWidget.topLevelItem(0))
-#        self.treeWidget.resizeColumnToContents(0)
-#        self.treeWidget.resizeColumnToContents(1)
-        self.treeWidget.adjustSize()
         self.treeWidget.setUpdatesEnabled(True)
+
+    def resetSuggest(self):
+        self.treeWidget.clearSelection()
+        

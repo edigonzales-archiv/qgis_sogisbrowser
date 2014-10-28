@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_sogis_browser_dock.ui'
 #
-# Created: Sun Oct 26 17:49:27 2014
+# Created: Tue Oct 28 20:58:16 2014
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -23,6 +23,20 @@ class Ui_SogisBrowserDock(object):
         self.gridLayout = QtGui.QGridLayout(self.dockWidgetContents)
         self.gridLayout.setContentsMargins(0, -1, 0, 0)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
+        self.horizontalLayout_3 = QtGui.QHBoxLayout()
+        self.horizontalLayout_3.setContentsMargins(3, -1, 3, -1)
+        self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
+        self.checkBoxVektor = QtGui.QCheckBox(self.dockWidgetContents)
+        self.checkBoxVektor.setChecked(True)
+        self.checkBoxVektor.setObjectName(_fromUtf8("checkBoxVektor"))
+        self.horizontalLayout_3.addWidget(self.checkBoxVektor)
+        self.checkBoxRaster = QtGui.QCheckBox(self.dockWidgetContents)
+        self.checkBoxRaster.setChecked(True)
+        self.checkBoxRaster.setObjectName(_fromUtf8("checkBoxRaster"))
+        self.horizontalLayout_3.addWidget(self.checkBoxRaster)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem)
+        self.gridLayout.addLayout(self.horizontalLayout_3, 1, 0, 1, 1)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setContentsMargins(3, -1, 3, -1)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
@@ -33,15 +47,6 @@ class Ui_SogisBrowserDock(object):
         self.toolButtonReset.setObjectName(_fromUtf8("toolButtonReset"))
         self.horizontalLayout.addWidget(self.toolButtonReset)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
-        self.treeWidget = QtGui.QTreeWidget(self.dockWidgetContents)
-        self.treeWidget.setDragEnabled(False)
-        self.treeWidget.setAlternatingRowColors(True)
-        self.treeWidget.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
-        self.treeWidget.setColumnCount(1)
-        self.treeWidget.setObjectName(_fromUtf8("treeWidget"))
-        self.treeWidget.headerItem().setText(0, _fromUtf8("1"))
-        self.treeWidget.header().setVisible(False)
-        self.gridLayout.addWidget(self.treeWidget, 2, 0, 1, 1)
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setContentsMargins(3, -1, 3, -1)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
@@ -49,7 +54,7 @@ class Ui_SogisBrowserDock(object):
         self.dateEdit.setLocale(QtCore.QLocale(QtCore.QLocale.German, QtCore.QLocale.Switzerland))
         self.dateEdit.setObjectName(_fromUtf8("dateEdit"))
         self.horizontalLayout_2.addWidget(self.dateEdit)
-        self.gridLayout.addLayout(self.horizontalLayout_2, 1, 0, 1, 1)
+        self.gridLayout.addLayout(self.horizontalLayout_2, 2, 0, 1, 1)
         SogisBrowserDock.setWidget(self.dockWidgetContents)
 
         self.retranslateUi(SogisBrowserDock)
@@ -57,6 +62,8 @@ class Ui_SogisBrowserDock(object):
 
     def retranslateUi(self, SogisBrowserDock):
         SogisBrowserDock.setWindowTitle(QtGui.QApplication.translate("SogisBrowserDock", "SO!GIS Browser", None, QtGui.QApplication.UnicodeUTF8))
+        self.checkBoxVektor.setText(QtGui.QApplication.translate("SogisBrowserDock", "Vektor", None, QtGui.QApplication.UnicodeUTF8))
+        self.checkBoxRaster.setText(QtGui.QApplication.translate("SogisBrowserDock", "Raster", None, QtGui.QApplication.UnicodeUTF8))
         self.toolButtonReset.setText(QtGui.QApplication.translate("SogisBrowserDock", "...", None, QtGui.QApplication.UnicodeUTF8))
         self.dateEdit.setDisplayFormat(QtGui.QApplication.translate("SogisBrowserDock", "dd. MMMM yyyy", None, QtGui.QApplication.UnicodeUTF8))
 

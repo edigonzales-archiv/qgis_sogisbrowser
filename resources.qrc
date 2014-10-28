@@ -5,4 +5,16 @@
     <qresource prefix="/plugins/sogisbrowser" >
         <file>icons/reset.svg</file>
     </qresource>
+    <qresource prefix="/plugins/sogisbrowser" >
+        <file>icons/mIconRaster.svg</file>
+    </qresource>
+    <qresource prefix="/plugins/sogisbrowser" >
+        <file>icons/mIconLineLayer.svg</file>
+    </qresource>
+    <qresource prefix="/plugins/sogisbrowser" >
+        <file>icons/mIconPointLayer.svg</file>
+    </qresource>
+    <qresource prefix="/plugins/sogisbrowser" >
+        <file>icons/mIconPolygonLayer.svg</file>
+    </qresource>
 </RCC>
